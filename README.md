@@ -42,7 +42,7 @@ source ~/.profile
 ## 1.2 Run the application
 Run the following command to launch the Docker Compose containers and run the application:
 ```shell
-docker-compose up -d
+./run.sh
 ```
 
 The application will then be available at this address: `http://localhost`.
