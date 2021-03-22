@@ -9,7 +9,7 @@ services:
       - POSTGRES_PASSWORD=keycloak
       - POSTGRES_DB=keycloak
     volumes:
-      - keycloak-database-data:/var/lib/posgresql/data/
+      - keycloak-database-data:/var/lib/postgresql/data/
 
   keycloak:
     container_name: keycloak
