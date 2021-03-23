@@ -26,8 +26,9 @@ The following environment variables are needed to run the application:
 - `PD_KEYCLOAK_USER`: The username for the keycloak superuser
 - `PD_KEYCLOAK_PASSWORD`: The password for the keycloak superuser
 - `PD_KEYCLOAK_ADDRESS`: The keycloak address
-- `PD_KEYCLOAK_REALM`: The name of the realm
-- `PD_KEYCLOAK_FRONTEND_CLIENT_ID`: The id of the frontend client
+- `PD_KEYCLOAK_REALM`: The name of the keycloak realm
+- `PD_KEYCLOAK_FRONTEND_CLIENT_ID`: The id of the frontend keycloak's client
+- `PD_KEYCLOAK_BACKEND_CLIENT_ID`: The id of the backend keycloak's client
 
 To add an env var you can add it to the `~/.profile` file this way:
 ```shell

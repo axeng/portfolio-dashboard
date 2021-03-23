@@ -38,6 +38,9 @@ services:
     restart: always
     environment:
       - ENV=production
+      - KEYCLOAK_ADDRESS=${PD_KEYCLOAK_ADDRESS}
+      - KEYCLOAK_REALM=${PD_KEYCLOAK_REALM}
+      - KEYCLOAK_CLIENT_ID=${PD_KEYCLOAK_BACKEND_CLIENT_ID}
     depends_on:
       - api-database
 
