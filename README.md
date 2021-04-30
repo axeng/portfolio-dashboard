@@ -41,14 +41,25 @@ source ~/.profile
 ```
 
 ## 1.2 Run the application
+### 1.2.1 Production environment
 Run the following command to launch the Docker Compose containers and run the application:
 ```shell
-./run.sh
+make prod start
 ```
 
 The application will then be available at this address: `http://localhost`.
 
 And to stop it you just need to run the following script:
 ```shell
-./stop.sh
+make prod stop
 ```
+
+### 1.2.2 Development environment
+To run the program with only the tools needed for development you can run the following commands:
+```shell
+# To start
+make dev start
+# To stop
+make dev stop
+```
+
