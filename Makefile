@@ -1,5 +1,5 @@
 # Files for both production and development
-MAIN_FILES = main.yml
+MAIN_FILES =
 # Files for production
 PROD_FILES = dc_main.yml dc_keycloak_prod.yml dc_api-database_prod.yml
 # Files for development
@@ -32,7 +32,6 @@ stop: files_args
 	docker volume rm $(VOLUMES_TO_DELETE) || true
 
 files_args:
-	echo $(ADDITIONAL_FILES_ARGS)
 	$(eval FILES_ARGS=$(MAIN_FILES_ARGS) $(ADDITIONAL_FILES_ARGS))
 
 
