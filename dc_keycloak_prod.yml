@@ -5,8 +5,8 @@ services:
     image: postgres:13-alpine
     restart: always
     environment:
-      - POSTGRES_USER=keycloak
-      - POSTGRES_PASSWORD=keycloak
+      - POSTGRES_USER=${PD_KEYCLOAK_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${PD_KEYCLOAK_POSTGRES_PASSWORD}
       - POSTGRES_DB=keycloak
     volumes:
       - keycloak-database-data:/var/lib/postgresql/data/
@@ -20,9 +20,9 @@ services:
       - DB_ADDR=keycloak-database
       - DB_PORT=5432
       - DB_DATABASE=keycloak
-      - DB_USER=keycloak
+      - DB_USER=${PD_KEYCLOAK_POSTGRES_USER}
       - DB_SCHEMA=public
-      - DB_PASSWORD=keycloak
+      - DB_PASSWORD=${PD_KEYCLOAK_POSTGRES_PASSWORD}
       - KEYCLOAK_USER=${PD_KEYCLOAK_USER}
       - KEYCLOAK_PASSWORD=${PD_KEYCLOAK_PASSWORD}
       - PROXY_ADDRESS_FORWARDING=true

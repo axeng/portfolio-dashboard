@@ -19,17 +19,6 @@ services:
     volumes:
       - dist-volume:/var/www/frontend/
 
-  api-database:
-    container_name: api-database
-    image: postgres:13-alpine
-    restart: always
-    environment:
-      - POSTGRES_USER=api
-      - POSTGRES_PASSWORD=api
-      - POSTGRES_DB=api
-    volumes:
-      - api-database-data:/var/lib/postgresql/data/
-
   backend-1:
     container_name: backend-1
     build:
@@ -60,5 +49,4 @@ services:
 
 volumes:
   dist-volume:
-  api-database-data:
 

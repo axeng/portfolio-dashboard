@@ -1,0 +1,15 @@
+version: "3"
+services:
+  api-database:
+    container_name: api-database
+    image: postgres:13-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=${PD_API_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${PD_API_POSTGRES_PASSWORD}
+      - POSTGRES_DB=api
+    volumes:
+      - api-database-data:/var/lib/postgresql/data/
+
+volumes:
+  api-database-data:

@@ -1,9 +1,9 @@
 # Files for both production and development
 MAIN_FILES = main.yml
 # Files for production
-PROD_FILES = dc_main.yml dc_keycloak_prod.yml
+PROD_FILES = dc_main.yml dc_keycloak_prod.yml dc_api-database_prod.yml
 # Files for development
-DEV_FILES = dc_keycloak_dev.yml
+DEV_FILES = dc_keycloak_dev.yml dc_api-database_dev.yml
 # Volumes that need to be deleted when stopping docker
 VOLUMES_TO_DELETE = portfolio-dashboard_dist-volume
 
