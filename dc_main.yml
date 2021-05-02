@@ -24,14 +24,26 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    entrypoint: uvicorn app.main:app --host 0.0.0.0 --port 80
     restart: always
     environment:
-      - ENV=production
       - KEYCLOAK_ADDRESS=${PD_KEYCLOAK_ADDRESS}
       - KEYCLOAK_REALM=${PD_KEYCLOAK_REALM}
       - KEYCLOAK_CLIENT_ID=${PD_KEYCLOAK_BACKEND_CLIENT_ID}
     depends_on:
       - api-database
+      - rabbitmq
+      - worker
+
+  worker:
+    container_name: worker
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    entrypoint: celery --app app.worker.main:app --broker amqp://rabbitmq worker --loglevel INFO
+    restart: always
+    depends_on:
+      - rabbitmq
 
   frontend:
     container_name: frontend
