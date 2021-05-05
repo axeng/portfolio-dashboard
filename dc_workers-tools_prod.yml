@@ -1,0 +1,11 @@
+version: "3"
+services:
+  workers-broker:
+    container_name: workers-broker
+    image: rabbitmq:3.8-alpine
+    restart: always
+
+  workers-backend:
+    container_name: workers-backend
+    image: redis:6.2-alpine
+    restart: always
