@@ -24,7 +24,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    entrypoint: uvicorn app.main:app --host 0.0.0.0 --port 80
+    entrypoint: ./start_app.sh
     restart: always
     environment:
       - PD_KEYCLOAK_ADDRESS=${PD_KEYCLOAK_ADDRESS}
@@ -32,6 +32,12 @@ services:
       - PD_KEYCLOAK_CLIENT_ID=${PD_KEYCLOAK_BACKEND_CLIENT_ID}
       - PD_CELERY_BROKER_ADDRESS=amqp://workers-broker
       - PD_CELERY_BACKEND_ADDRESS=redis://workers-backend/0
+      - PD_POSTGRES_ADDRESS=api-database
+      - PD_POSTGRES_USER=${PD_API_POSTGRES_USER}
+      - PD_POSTGRES_PASSWORD=${PD_API_POSTGRES_PASSWORD}
+      - PD_POSTGRES_DB=api
+      - PD_BACKEND_HOST=0.0.0.0
+      - PD_BACKEND_PORT=80
     depends_on:
       - api-database
       - workers
@@ -41,7 +47,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    entrypoint: celery --app app.worker.main:app worker --loglevel INFO
+    entrypoint: ./start_workers.sh
     restart: always
     environment:
       - PD_KEYCLOAK_ADDRESS=${PD_KEYCLOAK_ADDRESS}
@@ -49,6 +55,11 @@ services:
       - PD_KEYCLOAK_CLIENT_ID=${PD_KEYCLOAK_BACKEND_CLIENT_ID}
       - PD_CELERY_BROKER_ADDRESS=amqp://workers-broker
       - PD_CELERY_BACKEND_ADDRESS=redis://workers-backend/0
+      - PD_CELERY_LOG_LEVEL=INFO
+      - PD_POSTGRES_ADDRESS=api-database
+      - PD_POSTGRES_USER=${PD_API_POSTGRES_USER}
+      - PD_POSTGRES_PASSWORD=${PD_API_POSTGRES_PASSWORD}
+      - PD_POSTGRES_DB=api
     depends_on:
       - workers-broker
       - workers-backend

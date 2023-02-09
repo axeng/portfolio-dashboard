@@ -45,10 +45,10 @@ keycloak_dev:
 	$(call append_files,$(DC_KEYCLOAK_DEV_FILES))
 
 api-database_prod:
-	$(call append_files,$(DC_API-DATABASES_PROD_FILES))
+	$(call append_files,$(DC_API-DATABASE_PROD_FILES))
 
 api-database_dev:
-	$(call append_files,$(DC_API-DATABASES_DEV_FILES))
+	$(call append_files,$(DC_API-DATABASE_DEV_FILES))
 
 workers-tools_prod:
 	$(call append_files,$(DC_WORKERS-TOOLS_PROD_FILES))
